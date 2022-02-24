@@ -1,2 +1,2 @@
 # goethereumbook
-follow goethereumbook to learn develop dapps on ethereum or other chain
+follow goethereumbook to learn develop dapps on ethereum or other chain.
