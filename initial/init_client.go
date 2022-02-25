@@ -1,4 +1,4 @@
-package init
+package initial
 
 import (
 	"log"
@@ -6,7 +6,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-func initClient() {
+func InitClient() *ethclient.Client {
 	client, err := ethclient.Dial("https://cloudflare-eth.com") // 连接到infura网关
 	// or dial to local ipc
 	//client, err = ethclient.Dial("/home/user/.ethereum/geth.ipc")
@@ -15,5 +15,5 @@ func initClient() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	client.Close()
+	return client
 }
