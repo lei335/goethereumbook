@@ -5,6 +5,8 @@ import (
 	"fmt"
 	initial "goethereum/initial"
 	"log"
+	"math"
+	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
 )
@@ -24,4 +26,14 @@ func balance() {
 		log.Fatal(err)
 	}
 	fmt.Println(balance)
+
+	// 精度转换
+	fbalance := new(big.Float)
+	fbalance.SetString(balance.String())
+	ethValue := new(big.Float).Quo(fbalance, big.NewFloat(math.Pow10(18)))
+	fmt.Println(ethValue)
+
+	// 待处理账户余额
+	pendingBalance, err := client.PendingBalanceAt(context.Background(), account)
+	fmt.Println(pendingBalance)
 }
