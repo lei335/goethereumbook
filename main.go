@@ -10,8 +10,13 @@ go项目目录结构通常如下：
 	- Makefile
 */
 
-import "fmt"
+import (
+	"fmt"
+	"goethereum/transaction"
+)
 
 func main() {
 	fmt.Println("Hello, go ethereum!")
+
+	transaction.SendRawTx()
 }

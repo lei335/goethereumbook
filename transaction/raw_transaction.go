@@ -3,6 +3,7 @@ package transaction
 import (
 	"context"
 	"crypto/ecdsa"
+	"encoding/hex"
 	"fmt"
 	"goethereum/initial"
 	"log"
@@ -16,7 +17,7 @@ import (
 	"golang.org/x/crypto/sha3"
 )
 
-func transferErc20() {
+func NewRawTransaction() {
 	client := initial.InitClient()
 
 	privateKey, err := crypto.HexToECDSA("fad9c8855b740a0b7ed4c221dbad0f33a83a49cad6b3fe8d5817ac83d38b6a19")
@@ -86,11 +87,11 @@ func transferErc20() {
 		log.Fatal(err)
 	}
 
-	// 广播交易
-	err = client.SendTransaction(context.Background(), signedTx)
+	// 创建裸交易
+	rawTxBytes, err := signedTx.MarshalBinary()
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Printf("tx sent: %s", signedTx.Hash().Hex())
+	rawTxHex := hex.EncodeToString(rawTxBytes)
+	fmt.Println(rawTxHex)
 }
