@@ -12,11 +12,11 @@ go项目目录结构通常如下：
 
 import (
 	"fmt"
-	"goethereum/transaction"
+	"goethereum/contract"
 )
 
 func main() {
 	fmt.Println("Hello, go ethereum!")
 
-	transaction.SendRawTx()
+	contract.QueryERC20()
 }
